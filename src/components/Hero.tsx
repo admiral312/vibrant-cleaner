@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { ArrowRight, CheckCircle } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Hero = () => {
   const features = [
@@ -9,6 +10,8 @@ const Hero = () => {
     "Eco-friendly products",
     "Insured & trained staff"
   ];
+  
+  const isMobile = useIsMobile();
 
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-28 pb-16 md:pt-24 overflow-hidden">

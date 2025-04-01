@@ -42,6 +42,7 @@
 @layer base {
   * {
     @apply border-border;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -116,4 +117,47 @@
   .navbar-link:hover::after {
     @apply w-full;
   }
+  
+  /* Enhanced animation classes */
+  .fade-in {
+    @apply opacity-0 transition-opacity duration-700 ease-in;
+  }
+  
+  .fade-in.appear {
+    @apply opacity-100;
+  }
+  
+  .slide-up {
+    @apply transform translate-y-8 opacity-0 transition-all duration-700 ease-out;
+  }
+  
+  .slide-up.appear {
+    @apply translate-y-0 opacity-100;
+  }
+  
+  .scale-in {
+    @apply transform scale-95 opacity-0 transition-all duration-700 ease-out;
+  }
+  
+  .scale-in.appear {
+    @apply scale-100 opacity-100;
+  }
+}
+
+/* Enhanced scrollbar styling */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-cleaner/70 rounded-full hover:bg-cleaner;
+}
+
+/* Selection styling */
+::selection {
+  @apply bg-cleaner text-white;
 }

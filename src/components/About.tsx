@@ -1,6 +1,14 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
+import { Check } from 'lucide-react';
+
+const benefits = [
+  "Professionally trained staff",
+  "Eco-friendly cleaning products",
+  "Flexible scheduling options",
+  "100% satisfaction guarantee"
+];
 
 const About = () => {
   const [clientCount, setClientCount] = useState(0);
@@ -54,9 +62,9 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="py-16 bg-gradient-to-b from-white to-secondary" ref={sectionRef}>
+    <section id="about" className="py-24 bg-gradient-to-b from-white to-secondary/50" ref={sectionRef}>
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div 
             style={{ opacity, y }}
             className="relative order-2 md:order-1"
@@ -68,11 +76,15 @@ const About = () => {
               viewport={{ once: true }}
               className="bg-white rounded-2xl shadow-lg overflow-hidden p-4 max-w-md mx-auto"
             >
-              <img 
-                src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?q=80&w=1974&auto=format&fit=crop" 
-                alt="Professional Cleaning" 
-                className="rounded-xl"
-              />
+              <div className="relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?q=80&w=1974&auto=format&fit=crop" 
+                  alt="Professional Cleaning" 
+                  className="rounded-xl w-full h-auto"
+                />
+                {/* Image overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-cleaner-600/40 to-transparent opacity-60 rounded-xl" />
+              </div>
               
               <motion.div 
                 className="absolute -right-8 -bottom-10 bg-cleaner rounded-lg p-6 shadow-xl"
@@ -83,7 +95,7 @@ const About = () => {
                 ref={countRef}
               >
                 <motion.span 
-                  className="text-3xl font-bold text-white block"
+                  className="text-3xl md:text-4xl font-bold text-white block"
                 >
                   {clientCount}+
                 </motion.span>
@@ -124,7 +136,7 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="mb-4"
+              className="mb-6 text-lg"
             >
               With years of experience in the cleaning industry, we've developed efficient techniques and use the highest quality products to ensure your spaces are not just clean, but healthy environments for you to live and work in.
             </motion.p>
@@ -134,9 +146,34 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
               viewport={{ once: true }}
+              className="mb-8 text-lg"
             >
-              Our dedicated team of professionals is committed to providing exceptional service with attention to detail that sets us apart. Whether you need regular home cleaning, a one-time deep clean, or specialized commercial services, we have the expertise and equipment to exceed your expectations.
+              Our dedicated team of professionals is committed to providing exceptional service with attention to detail that sets us apart.
             </motion.p>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8"
+            >
+              {benefits.map((benefit, index) => (
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 * index + 0.8 }}
+                  viewport={{ once: true }}
+                  className="flex items-center gap-3"
+                >
+                  <div className="flex-shrink-0 h-6 w-6 rounded-full bg-cleaner text-white flex items-center justify-center">
+                    <Check className="h-4 w-4" />
+                  </div>
+                  <span className="text-foreground">{benefit}</span>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </div>

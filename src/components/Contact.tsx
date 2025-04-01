@@ -1,8 +1,10 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, Loader2 } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -40,7 +42,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-secondary to-white">
+    <section id="contact" className="py-24 bg-gradient-to-b from-secondary/50 to-white">
       <div className="container mx-auto px-4">
         <div className="section-title">
           <motion.span 
@@ -101,6 +103,24 @@ const Contact = () => {
                   <p className="text-muted-foreground">thebestcleaner@gmail.com</p>
                 </div>
               </div>
+              
+              {/* Map Embed - Added for professional look */}
+              <motion.div 
+                className="mt-8 rounded-lg overflow-hidden shadow-md h-64 sm:h-72"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+              >
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28877057.744406443!2d115.230704!3d-25.2743988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2b2bfd076787c5df%3A0x538267a1955b1352!2sAustralia!5e0!3m2!1sen!2s!4v1665143186867!5m2!1sen!2s" 
+                  style={{ border: 0, width: '100%', height: '100%' }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Company Location"
+                />
+              </motion.div>
             </motion.div>
             
             <motion.div 
@@ -110,14 +130,14 @@ const Contact = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-md">
+              <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300">
                 <div className="grid grid-cols-1 gap-6">
                   <div>
-                    <input 
+                    <Input 
                       type="text" 
                       id="name" 
-                      placeholder="Name" 
-                      className="w-full px-4 py-3 rounded-full border border-border focus:outline-none focus:ring-2 focus:ring-cleaner focus:border-transparent"
+                      placeholder="Your Name" 
+                      className="w-full px-4 py-3 h-12 rounded-full border focus:border-cleaner focus:ring-cleaner"
                       required
                       value={formData.name}
                       onChange={handleChange}
@@ -125,11 +145,11 @@ const Contact = () => {
                   </div>
                   
                   <div>
-                    <input 
+                    <Input 
                       type="email" 
                       id="email" 
-                      placeholder="Email" 
-                      className="w-full px-4 py-3 rounded-full border border-border focus:outline-none focus:ring-2 focus:ring-cleaner focus:border-transparent"
+                      placeholder="Your Email" 
+                      className="w-full px-4 py-3 h-12 rounded-full border focus:border-cleaner focus:ring-cleaner"
                       required
                       value={formData.email}
                       onChange={handleChange}
@@ -137,11 +157,11 @@ const Contact = () => {
                   </div>
                   
                   <div>
-                    <input 
+                    <Input 
                       type="tel" 
                       id="phone" 
-                      placeholder="Phone" 
-                      className="w-full px-4 py-3 rounded-full border border-border focus:outline-none focus:ring-2 focus:ring-cleaner focus:border-transparent"
+                      placeholder="Your Phone" 
+                      className="w-full px-4 py-3 h-12 rounded-full border focus:border-cleaner focus:ring-cleaner"
                       required
                       value={formData.phone}
                       onChange={handleChange}
@@ -151,9 +171,9 @@ const Contact = () => {
                   <div>
                     <textarea 
                       id="message" 
-                      placeholder="Message" 
+                      placeholder="Your Message" 
                       rows={4}
-                      className="w-full px-4 py-3 rounded-2xl border border-border focus:outline-none focus:ring-2 focus:ring-cleaner focus:border-transparent resize-none"
+                      className="w-full px-4 py-3 rounded-2xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-cleaner focus:border-transparent resize-none"
                       required
                       value={formData.message}
                       onChange={handleChange}
@@ -161,15 +181,23 @@ const Contact = () => {
                   </div>
                   
                   <div>
-                    <motion.button
+                    <Button
                       type="submit"
-                      className="btn-primary w-full flex items-center justify-center"
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.98 }}
+                      className="w-full bg-cleaner hover:bg-cleaner-600 text-white font-medium py-6 h-12 px-6 rounded-full transition-all duration-300 ease-in-out shadow-md hover:shadow-lg flex items-center justify-center gap-2"
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
-                    </motion.button>
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Send Message
+                          <Send className="h-4 w-4 ml-1" />
+                        </>
+                      )}
+                    </Button>
                   </div>
                 </div>
               </form>

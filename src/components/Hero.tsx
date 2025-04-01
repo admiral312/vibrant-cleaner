@@ -1,9 +1,14 @@
 
 import { motion } from 'framer-motion';
+import { Button } from './ui/button';
+import { ArrowRight } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section id="home" className="pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+    <section id="home" className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-3/4 h-full bg-gradient-to-bl from-cleaner-50/50 to-transparent -z-10 rounded-bl-[100px]" />
+      
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <motion.div
@@ -12,6 +17,15 @@ const Hero = () => {
             transition={{ duration: 0.7 }}
             className="text-center md:text-left"
           >
+            <motion.span 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="inline-block text-cleaner font-medium mb-2 text-lg"
+            >
+              Professional Cleaning Services
+            </motion.span>
+            
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -20,6 +34,7 @@ const Hero = () => {
             >
               Need Cleaning Service?
             </motion.h1>
+            
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -29,14 +44,20 @@ const Hero = () => {
               Professional, reliable, and thorough cleaning services for your home or business.
               We make your space shine so you can focus on what matters most.
             </motion.p>
+            
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.6 }}
             >
-              <a href="#about" className="btn-primary inline-block">
-                Know More
-              </a>
+              <Button 
+                asChild
+                className="bg-cleaner hover:bg-cleaner-600 text-white font-medium py-6 px-8 rounded-full transition-all duration-300 ease-in-out shadow-md hover:shadow-lg transform hover:-translate-y-1 text-lg"
+              >
+                <a href="#about" className="flex items-center gap-2">
+                  Know More <ArrowRight className="ml-1 w-5 h-5" />
+                </a>
+              </Button>
             </motion.div>
           </motion.div>
 
@@ -51,31 +72,38 @@ const Hero = () => {
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0 bg-cleaner/10 rounded-full"
               initial={{ width: 300, height: 300 }}
               animate={{ 
-                width: 350, 
-                height: 350, 
-                backgroundColor: "rgba(85, 179, 213, 0.15)" 
+                width: [300, 350, 300], 
+                height: [300, 350, 300], 
+                backgroundColor: ["rgba(85, 179, 213, 0.1)", "rgba(85, 179, 213, 0.15)", "rgba(85, 179, 213, 0.1)"] 
               }}
               transition={{ 
                 repeat: Infinity, 
                 repeatType: "reverse", 
-                duration: 3 
+                duration: 4
               }}
             />
             
             {/* Animated hero image */}
-            <motion.img 
-              src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1770&auto=format&fit=crop"
-              alt="Cleaning Service" 
-              className="relative z-10 mx-auto rounded-2xl shadow-lg"
+            <motion.div
+              className="relative z-10 mx-auto rounded-2xl shadow-lg overflow-hidden"
               initial={{ y: 20 }}
-              animate={{ y: 0 }}
+              animate={{ y: [0, -10, 0] }}
               transition={{ 
-                duration: 2, 
+                duration: 4, 
                 repeat: Infinity, 
                 repeatType: "reverse" 
               }}
-              style={{ maxWidth: "85%" }}
-            />
+              style={{ maxWidth: "90%" }}
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1770&auto=format&fit=crop"
+                alt="Cleaning Service" 
+                className="w-full h-auto rounded-2xl transform transition duration-700 hover:scale-105"
+              />
+              
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-cleaner-600/30 to-transparent opacity-60" />
+            </motion.div>
             
             {/* Decorative elements */}
             <motion.div

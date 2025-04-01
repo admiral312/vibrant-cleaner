@@ -5,9 +5,9 @@ import { ArrowRight } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+    <section id="home" className="relative pt-32 pb-16 md:pt-36 md:pb-20 lg:pt-40 lg:pb-24 overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-3/4 h-full bg-gradient-to-bl from-cleaner-50/50 to-transparent -z-10 rounded-bl-[100px]" />
+      <div className="absolute top-0 right-0 w-full md:w-3/4 h-full bg-gradient-to-bl from-cleaner-50/50 to-transparent -z-10 rounded-bl-[100px]" />
       
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -55,7 +55,7 @@ const Hero = () => {
                 className="bg-cleaner hover:bg-cleaner-600 text-white font-medium py-6 px-8 rounded-full transition-all duration-300 ease-in-out shadow-md hover:shadow-lg transform hover:-translate-y-1 text-lg"
               >
                 <a href="#about" className="flex items-center gap-2">
-                  Know More <ArrowRight className="ml-1 w-5 h-5" />
+                  Learn More <ArrowRight className="ml-1 w-5 h-5" />
                 </a>
               </Button>
             </motion.div>
@@ -67,7 +67,7 @@ const Hero = () => {
             transition={{ duration: 0.7 }}
             className="relative"
           >
-            {/* Animated background circle */}
+            {/* Animated background elements */}
             <motion.div 
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0 bg-cleaner/10 rounded-full"
               initial={{ width: 300, height: 300 }}
@@ -85,7 +85,7 @@ const Hero = () => {
             
             {/* Animated hero image */}
             <motion.div
-              className="relative z-10 mx-auto rounded-2xl shadow-lg overflow-hidden"
+              className="relative z-10 mx-auto rounded-2xl shadow-xl overflow-hidden"
               initial={{ y: 20 }}
               animate={{ y: [0, -10, 0] }}
               transition={{ 
@@ -96,8 +96,8 @@ const Hero = () => {
               style={{ maxWidth: "90%" }}
             >
               <img 
-                src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1770&auto=format&fit=crop"
-                alt="Cleaning Service" 
+                src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?q=80&w=1974&auto=format&fit=crop"
+                alt="Professional Cleaning Service" 
                 className="w-full h-auto rounded-2xl transform transition duration-700 hover:scale-105"
               />
               

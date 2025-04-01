@@ -13,8 +13,9 @@ const Footer = () => {
           {/* Company Info */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
           >
             <h3 className="text-xl font-semibold mb-4">The Best Cleaner</h3>
             <p className="mb-4 text-white/80">
@@ -49,8 +50,9 @@ const Footer = () => {
           {/* Quick Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
           >
             <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
@@ -72,8 +74,9 @@ const Footer = () => {
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
           >
             <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-3">
@@ -100,8 +103,9 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <motion.p 
               initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
               className="text-white/80 text-sm"
             >
               © 2020 - {currentYear} Designed and Developed by Greenmantis
@@ -109,8 +113,9 @@ const Footer = () => {
             
             <motion.p
               initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
               className="text-white/80 text-sm"
             >
               All Rights Reserved

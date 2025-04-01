@@ -37,7 +37,7 @@ const Index = () => {
     // Wait for components to fully load
     const timer = setTimeout(() => {
       setIsLoaded(true);
-    }, 2500); // Slightly longer than preloader to ensure smooth transition
+    }, 2500);
 
     document.addEventListener('click', handleAnchorClick);
     

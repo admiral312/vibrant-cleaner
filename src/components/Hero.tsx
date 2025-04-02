@@ -1,25 +1,25 @@
 
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle, Phone, Mail, MapPin, Clock, Shield } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const Hero = () => {
   const features = [
-    "Professional & reliable service",
-    "Eco-friendly products",
-    "Insured & trained staff"
+    { text: "Premium cleaning services", icon: <Shield className="h-4 w-4 text-cleaner" /> },
+    { text: "Eco-friendly products", icon: <CheckCircle className="h-4 w-4 text-cleaner" /> },
+    { text: "Expert & insured staff", icon: <CheckCircle className="h-4 w-4 text-cleaner" /> }
   ];
   
   const isMobile = useIsMobile();
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-28 pb-16 md:pt-24 overflow-hidden">
+    <section id="home" className="relative min-h-[92vh] flex items-center pt-32 pb-16 md:pt-36 lg:pt-32 xl:pt-32 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 right-0 w-full md:w-3/5 h-full bg-gradient-to-bl from-cleaner-50/30 to-transparent rounded-bl-[100px]" />
         <motion.div 
-          className="absolute bottom-0 left-0 w-32 h-32 md:w-64 md:h-64 rounded-tr-[100px] bg-cleaner-100/50" 
+          className="absolute bottom-0 left-0 w-24 h-24 md:w-56 md:h-56 rounded-tr-[100px] bg-cleaner-100/50" 
           animate={{ 
             scale: [1, 1.1, 1],
             rotate: [0, 5, 0]
@@ -32,8 +32,8 @@ const Hero = () => {
         />
       </div>
       
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-10 lg:gap-x-12 items-center">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -54,18 +54,18 @@ const Hero = () => {
                   transition={{ delay: 0.4, duration: 0.6 }}
                   className="inline-block px-4 py-1 bg-cleaner-100 text-cleaner-700 rounded-full text-sm font-medium mb-3"
                 >
-                  Premium Cleaning Services
+                  Professional Cleaning Excellence
                 </motion.span>
                 
                 <motion.h1 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.7 }}
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4"
+                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 tracking-tight"
                 >
-                  <span className="block">Creating Clean</span> 
+                  <span className="block">Transform Your</span> 
                   <span className="bg-gradient-to-r from-cleaner to-cleaner-700 bg-clip-text text-transparent">
-                    Spaces for Living
+                    Space with Professionals
                   </span>
                 </motion.h1>
                 
@@ -75,7 +75,7 @@ const Hero = () => {
                   transition={{ delay: 0.7, duration: 0.7 }}
                   className="text-lg text-muted-foreground max-w-lg mx-auto lg:mx-0"
                 >
-                  Professional cleaning services tailored to your needs. We make your space shine so you can focus on what matters most.
+                  We deliver exceptional cleaning services with attention to detail, using eco-friendly products to create healthier, spotless environments for homes and businesses.
                 </motion.p>
               </div>
               
@@ -94,13 +94,40 @@ const Hero = () => {
                     transition={{ delay: 0.9 + (index * 0.1), duration: 0.5 }}
                     className="flex items-center gap-2"
                   >
-                    <CheckCircle className="h-5 w-5 text-cleaner" />
-                    <span className="text-sm font-medium">{feature}</span>
+                    {feature.icon}
+                    <span className="text-sm font-medium">{feature.text}</span>
                   </motion.div>
                 ))}
               </motion.div>
               
-              {/* CTA Button */}
+              {/* Contact information */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.0, duration: 0.7 }}
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 max-w-md mx-auto lg:mx-0"
+              >
+                <div className="flex items-center gap-3 bg-white/80 p-3 rounded-lg shadow-sm">
+                  <div className="w-8 h-8 rounded-full bg-cleaner-50 flex items-center justify-center flex-shrink-0">
+                    <Phone className="h-4 w-4 text-cleaner-700" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-xs text-muted-foreground">Call Us</p>
+                    <p className="font-medium">(123) 456-7890</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 bg-white/80 p-3 rounded-lg shadow-sm">
+                  <div className="w-8 h-8 rounded-full bg-cleaner-50 flex items-center justify-center flex-shrink-0">
+                    <Mail className="h-4 w-4 text-cleaner-700" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-xs text-muted-foreground">Email Us</p>
+                    <p className="font-medium">info@bestcleaner.com</p>
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* CTA Buttons */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -147,49 +174,76 @@ const Hero = () => {
                 <img 
                   src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2070&auto=format&fit=crop" 
                   alt="Professional Cleaning Service" 
-                  className="w-full h-auto rounded-2xl"
+                  className="w-full h-auto rounded-2xl object-cover"
                 />
                 
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-r from-cleaner-700/30 to-transparent opacity-60" />
               </motion.div>
               
-              {/* Floating statistics card */}
+              {/* Floating cards */}
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2, duration: 0.8 }}
-                className="absolute -bottom-8 -left-8 md:-left-12 bg-white rounded-lg p-4 shadow-xl"
+                className="absolute -bottom-8 -left-8 md:-left-12 bg-white rounded-lg p-3 md:p-4 shadow-xl"
                 whileHover={{ 
                   y: -5,
                   boxShadow: "0 25px 50px -12px rgba(85, 179, 213, 0.25)"
                 }}
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-cleaner/10 flex items-center justify-center">
-                    <span className="text-cleaner-600 font-bold text-lg">5★</span>
+                <div className="flex items-center gap-3 md:gap-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-cleaner/10 flex items-center justify-center">
+                    <span className="text-cleaner-600 font-bold text-sm md:text-lg">5★</span>
                   </div>
                   <div>
-                    <span className="block font-bold text-foreground">500+</span>
+                    <span className="block font-bold text-foreground text-sm md:text-base">500+</span>
                     <span className="text-xs text-muted-foreground">Happy Clients</span>
                   </div>
                 </div>
               </motion.div>
               
-              {/* Floating service card */}
+              {/* Service hours card */}
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.4, duration: 0.8 }}
-                className="absolute -top-10 -right-6 bg-white rounded-lg p-4 shadow-xl hidden md:block"
+                className="absolute -top-6 md:-top-10 -right-4 md:-right-6 bg-white rounded-lg p-3 md:p-4 shadow-xl hidden sm:block"
                 whileHover={{ 
                   y: -5,
                   boxShadow: "0 25px 50px -12px rgba(85, 179, 213, 0.25)"
                 }}
               >
-                <div className="text-center">
-                  <span className="block font-bold text-cleaner">Premium Service</span>
-                  <span className="text-xs text-muted-foreground">Eco-Friendly Cleaning</span>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-cleaner-50 flex items-center justify-center">
+                    <Clock className="h-5 w-5 text-cleaner" />
+                  </div>
+                  <div className="text-left">
+                    <span className="block font-bold text-cleaner text-sm">Available 24/7</span>
+                    <span className="text-xs text-muted-foreground">Fast Response</span>
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* Location card */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.6, duration: 0.8 }}
+                className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-8 bg-white rounded-lg p-3 shadow-xl hidden md:block"
+                whileHover={{ 
+                  x: -5,
+                  boxShadow: "0 25px 50px -12px rgba(85, 179, 213, 0.25)"
+                }}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-cleaner-50 flex items-center justify-center">
+                    <MapPin className="h-5 w-5 text-cleaner" />
+                  </div>
+                  <div className="text-left">
+                    <span className="block font-bold text-foreground text-sm">Serving</span>
+                    <span className="text-xs text-muted-foreground">All Metro Areas</span>
+                  </div>
                 </div>
               </motion.div>
             </div>

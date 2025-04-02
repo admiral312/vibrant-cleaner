@@ -40,10 +40,10 @@ const Services = () => {
   const isMobile = useIsMobile();
   
   return (
-    <section id="services" className="py-16 md:py-24 bg-gradient-to-b from-background to-cleaner-50/20">
-      <div className="container mx-auto px-4">
+    <section id="services" className="py-20 md:py-28 bg-gradient-to-b from-background to-cleaner-50/20">
+      <div className="container mx-auto px-6">
         {/* Section header */}
-        <div className="text-center mx-auto max-w-2xl mb-16">
+        <div className="text-center mx-auto max-w-2xl mb-16 md:mb-20">
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -80,7 +80,7 @@ const Services = () => {
         </div>
         
         {/* Services grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 mb-16">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -122,8 +122,8 @@ const Services = () => {
                   </p>
                   
                   <div className="mt-auto">
-                    <h4 className="font-medium text-sm mb-2 text-foreground/90">Key Benefits:</h4>
-                    <ul className="space-y-2">
+                    <h4 className="font-medium text-sm mb-3 text-foreground/90">Key Benefits:</h4>
+                    <ul className="space-y-2 mb-6">
                       {service.benefits.map((benefit, i) => (
                         <li key={i} className="flex items-start gap-2 text-sm">
                           <span className="text-cleaner mt-0.5">
@@ -137,7 +137,6 @@ const Services = () => {
                     <motion.div
                       whileHover={{ y: -3 }}
                       transition={{ duration: 0.2 }}
-                      className="mt-6"
                     >
                       <Button 
                         variant="outline" 

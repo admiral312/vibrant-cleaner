@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Calendar } from 'lucide-react';
+import { Menu, X, Calendar, Phone } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Button } from './ui/button';
 import BookingDialog from './BookingDialog';
@@ -41,6 +41,10 @@ const Navbar = () => {
   }, [isOpen]);
 
   const toggleMenu = () => setIsOpen(!isOpen);
+  
+  const handleCallNow = () => {
+    window.location.href = 'tel:1234567890';
+  };
 
   return (
     <>
@@ -54,7 +58,7 @@ const Navbar = () => {
             : 'bg-transparent py-5'
         }`}
       >
-        <div className="container mx-auto px-4 flex justify-between items-center">
+        <div className="container mx-auto px-6 flex justify-between items-center">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -74,7 +78,7 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-              <ul className="flex gap-6 lg:gap-8">
+              <ul className="flex gap-8 lg:gap-10">
                 {navLinks.map((link, index) => (
                   <motion.li
                     key={index}
@@ -84,7 +88,7 @@ const Navbar = () => {
                   >
                     <a 
                       href={link.href} 
-                      className="relative px-3 py-2 text-foreground hover:text-cleaner transition-colors"
+                      className="relative px-3 py-2 text-foreground hover:text-cleaner transition-colors text-base"
                     >
                       {link.title}
                       <motion.span 
@@ -101,11 +105,20 @@ const Navbar = () => {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.7 }}
+              transition={{ delay: 0.6 }}
+              className="flex items-center gap-3"
             >
               <Button 
+                onClick={handleCallNow}
+                className="bg-cleaner-600 hover:bg-cleaner-700 text-white font-medium px-5 py-2.5 rounded-full transition-all duration-300 flex items-center gap-2"
+              >
+                <Phone className="w-4 h-4" />
+                Call Now
+              </Button>
+              
+              <Button 
                 onClick={() => setShowBookingDialog(true)}
-                className="bg-cleaner hover:bg-cleaner-600 text-white font-medium px-5 py-2 rounded-full transition-all duration-300 flex items-center gap-2"
+                className="bg-cleaner hover:bg-cleaner-600 text-white font-medium px-5 py-2.5 rounded-full transition-all duration-300 flex items-center gap-2"
               >
                 <Calendar className="w-4 h-4" />
                 Book Now
@@ -116,6 +129,15 @@ const Navbar = () => {
           {/* Mobile Menu Button and Book Now button */}
           <div className="md:hidden flex items-center gap-4">
             <Button 
+              onClick={handleCallNow}
+              size="sm"
+              className="bg-cleaner-600 hover:bg-cleaner-700 text-white font-medium rounded-full transition-all duration-300"
+            >
+              <Phone className="w-4 h-4 mr-1" />
+              <span className="text-xs">Call</span>
+            </Button>
+            
+            <Button 
               onClick={() => setShowBookingDialog(true)}
               size="sm"
               className="bg-cleaner hover:bg-cleaner-600 text-white font-medium rounded-full transition-all duration-300"
@@ -125,7 +147,7 @@ const Navbar = () => {
             </Button>
             
             <button 
-              className="text-cleaner z-50"
+              className="text-cleaner z-50 p-2"
               onClick={toggleMenu}
               aria-label="Toggle Menu"
             >
@@ -154,7 +176,7 @@ const Navbar = () => {
                       >
                         <a 
                           href={link.href} 
-                          className="block text-lg py-2 border-b border-gray-200"
+                          className="block text-lg py-3 border-b border-gray-200"
                           onClick={toggleMenu}
                         >
                           {link.title}

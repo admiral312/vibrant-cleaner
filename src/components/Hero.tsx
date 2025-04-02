@@ -13,8 +13,13 @@ const Hero = () => {
   
   const isMobile = useIsMobile();
 
+  // Handle phone call
+  const handleCallNow = () => {
+    window.location.href = 'tel:1234567890';
+  };
+
   return (
-    <section id="home" className="relative min-h-[92vh] flex items-center pt-32 pb-16 md:pt-36 lg:pt-32 xl:pt-32 overflow-hidden">
+    <section id="home" className="relative min-h-[92vh] flex items-center pt-28 pb-16 md:pt-32 lg:pt-28 xl:pt-32 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 right-0 w-full md:w-3/5 h-full bg-gradient-to-bl from-cleaner-50/30 to-transparent rounded-bl-[100px]" />
@@ -32,8 +37,8 @@ const Hero = () => {
         />
       </div>
       
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-10 lg:gap-x-12 items-center">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-10 lg:gap-x-16 items-center">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -61,9 +66,9 @@ const Hero = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.7 }}
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 tracking-tight"
+                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight"
                 >
-                  <span className="block">Transform Your</span> 
+                  <span className="block mb-2">Transform Your</span> 
                   <span className="bg-gradient-to-r from-cleaner to-cleaner-700 bg-clip-text text-transparent">
                     Space with Professionals
                   </span>
@@ -135,6 +140,13 @@ const Hero = () => {
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               >
                 <Button 
+                  onClick={handleCallNow}
+                  className="bg-cleaner hover:bg-cleaner-600 text-white font-medium py-6 px-8 rounded-full transition-all duration-300 ease-in-out shadow-lg shadow-cleaner/20 hover:shadow-xl hover:shadow-cleaner/30 transform hover:-translate-y-1 text-base"
+                >
+                  <Phone className="mr-2 h-5 w-5" /> Call Now
+                </Button>
+                
+                <Button 
                   asChild
                   className="bg-cleaner hover:bg-cleaner-600 text-white font-medium py-6 px-8 rounded-full transition-all duration-300 ease-in-out shadow-lg shadow-cleaner/20 hover:shadow-xl hover:shadow-cleaner/30 transform hover:-translate-y-1 text-base"
                 >
@@ -181,71 +193,73 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-cleaner-700/30 to-transparent opacity-60" />
               </motion.div>
               
-              {/* Floating cards */}
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2, duration: 0.8 }}
-                className="absolute -bottom-8 -left-8 md:-left-12 bg-white rounded-lg p-3 md:p-4 shadow-xl"
-                whileHover={{ 
-                  y: -5,
-                  boxShadow: "0 25px 50px -12px rgba(85, 179, 213, 0.25)"
-                }}
-              >
-                <div className="flex items-center gap-3 md:gap-4">
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-cleaner/10 flex items-center justify-center">
-                    <span className="text-cleaner-600 font-bold text-sm md:text-lg">5★</span>
-                  </div>
-                  <div>
-                    <span className="block font-bold text-foreground text-sm md:text-base">500+</span>
-                    <span className="text-xs text-muted-foreground">Happy Clients</span>
-                  </div>
-                </div>
-              </motion.div>
-              
-              {/* Service hours card */}
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.4, duration: 0.8 }}
-                className="absolute -top-6 md:-top-10 -right-4 md:-right-6 bg-white rounded-lg p-3 md:p-4 shadow-xl hidden sm:block"
-                whileHover={{ 
-                  y: -5,
-                  boxShadow: "0 25px 50px -12px rgba(85, 179, 213, 0.25)"
-                }}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-cleaner-50 flex items-center justify-center">
-                    <Clock className="h-5 w-5 text-cleaner" />
-                  </div>
-                  <div className="text-left">
-                    <span className="block font-bold text-cleaner text-sm">Available 24/7</span>
-                    <span className="text-xs text-muted-foreground">Fast Response</span>
-                  </div>
-                </div>
-              </motion.div>
-              
-              {/* Location card */}
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.6, duration: 0.8 }}
-                className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-8 bg-white rounded-lg p-3 shadow-xl hidden md:block"
-                whileHover={{ 
-                  x: -5,
-                  boxShadow: "0 25px 50px -12px rgba(85, 179, 213, 0.25)"
-                }}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-cleaner-50 flex items-center justify-center">
-                    <MapPin className="h-5 w-5 text-cleaner" />
-                  </div>
-                  <div className="text-left">
-                    <span className="block font-bold text-foreground text-sm">Serving</span>
-                    <span className="text-xs text-muted-foreground">All Metro Areas</span>
-                  </div>
-                </div>
-              </motion.div>
+              {/* Floating cards - Only show on desktop */}
+              {!isMobile && (
+                <>
+                  <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.2, duration: 0.8 }}
+                    className="absolute -bottom-8 -left-8 md:-left-12 bg-white rounded-lg p-3 md:p-4 shadow-xl"
+                    whileHover={{ 
+                      y: -5,
+                      boxShadow: "0 25px 50px -12px rgba(85, 179, 213, 0.25)"
+                    }}
+                  >
+                    <div className="flex items-center gap-3 md:gap-4">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-cleaner/10 flex items-center justify-center">
+                        <span className="text-cleaner-600 font-bold text-sm md:text-lg">5★</span>
+                      </div>
+                      <div>
+                        <span className="block font-bold text-foreground text-sm md:text-base">500+</span>
+                        <span className="text-xs text-muted-foreground">Happy Clients</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                  
+                  <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.4, duration: 0.8 }}
+                    className="absolute -top-6 md:-top-10 -right-4 md:-right-6 bg-white rounded-lg p-3 md:p-4 shadow-xl"
+                    whileHover={{ 
+                      y: -5,
+                      boxShadow: "0 25px 50px -12px rgba(85, 179, 213, 0.25)"
+                    }}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-cleaner-50 flex items-center justify-center">
+                        <Clock className="h-5 w-5 text-cleaner" />
+                      </div>
+                      <div className="text-left">
+                        <span className="block font-bold text-cleaner text-sm">Available 24/7</span>
+                        <span className="text-xs text-muted-foreground">Fast Response</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                  
+                  <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.6, duration: 0.8 }}
+                    className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-8 bg-white rounded-lg p-3 shadow-xl"
+                    whileHover={{ 
+                      x: -5,
+                      boxShadow: "0 25px 50px -12px rgba(85, 179, 213, 0.25)"
+                    }}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-cleaner-50 flex items-center justify-center">
+                        <MapPin className="h-5 w-5 text-cleaner" />
+                      </div>
+                      <div className="text-left">
+                        <span className="block font-bold text-foreground text-sm">Serving</span>
+                        <span className="text-xs text-muted-foreground">All Metro Areas</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                </>
+              )}
             </div>
             
             {/* Background decorative elements */}

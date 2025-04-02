@@ -93,7 +93,7 @@ const About = () => {
 
   return (
     <section id="about" ref={sectionRef} className="py-20 lg:py-28 bg-gradient-to-b from-white to-cleaner-50/30 overflow-hidden">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Column - Image and Stats */}
           <motion.div 
@@ -156,7 +156,7 @@ const About = () => {
               {/* Stats Section */}
               <div 
                 ref={statsRef}
-                className="grid grid-cols-3 gap-4 mt-8"
+                className="grid grid-cols-3 gap-4 mt-10"
               >
                 {stats.map((stat, index) => (
                   <motion.div
@@ -189,7 +189,7 @@ const About = () => {
             className="order-1 lg:order-2"
             style={{ opacity, y: useTransform(y, (value) => value * -1) }}
           >
-            <div className="space-y-6">
+            <div className="space-y-8">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -235,7 +235,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
                 viewport={{ once: true }}
-                className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10"
               >
                 {benefits.map((benefit, index) => {
                   const Icon = benefit.icon;

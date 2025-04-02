@@ -1,6 +1,6 @@
-
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Phone } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -11,6 +11,7 @@ import Preloader from '@/components/Preloader';
 
 const Index = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showCallButton, setShowCallButton] = useState(false);
 
   // Handle smooth scrolling for anchor links
   useEffect(() => {
@@ -46,6 +47,24 @@ const Index = () => {
       clearTimeout(timer);
     };
   }, []);
+
+  // Handle scroll event listener to show/hide call button
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowCallButton(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Handle call now functionality
+  const handleCallNow = () => {
+    window.location.href = 'tel:1234567890';
+  };
 
   // Prepare the page variants for animation
   const pageVariants = {
@@ -90,6 +109,21 @@ const Index = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
           </svg>
         </motion.a>
+
+        {/* New Call Now Floating Button */}
+        {showCallButton && (
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={handleCallNow}
+            className="fixed bottom-24 right-8 z-40 bg-green-500 text-white h-12 w-12 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors"
+            whileHover={{ y: -5, scale: 1.05 }}
+            aria-label="Call Now"
+          >
+            <Phone className="h-6 w-6" />
+          </motion.button>
+        )}
       </motion.div>
     </>
   );

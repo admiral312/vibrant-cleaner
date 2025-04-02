@@ -29,14 +29,14 @@ const FloatingButtons = ({ scrollThreshold = 300 }: FloatingButtonsProps) => {
   };
 
   return (
-    <>
+    <div className="fixed bottom-8 right-8 z-40 flex items-center space-x-4">
       {/* Scroll to top button */}
       <motion.a
         href="#home"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.5 }}
-        className="fixed bottom-8 right-8 z-40 bg-cleaner text-white h-12 w-12 rounded-full flex items-center justify-center shadow-lg hover:bg-cleaner-600 transition-colors"
+        className="bg-cleaner text-white h-12 w-12 rounded-full flex items-center justify-center shadow-lg hover:bg-cleaner-600 transition-colors"
         whileHover={{ y: -5 }}
         aria-label="Scroll to top"
       >
@@ -52,14 +52,14 @@ const FloatingButtons = ({ scrollThreshold = 300 }: FloatingButtonsProps) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
           onClick={handleCallNow}
-          className="fixed bottom-24 right-8 z-40 bg-green-500 text-white h-12 w-12 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors"
+          className="bg-green-500 text-white h-12 w-12 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors"
           whileHover={{ y: -5, scale: 1.05 }}
           aria-label="Call Now"
         >
           <Phone className="h-6 w-6" />
         </motion.button>
       )}
-    </>
+    </div>
   );
 };
 

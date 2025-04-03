@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { ArrowRight, CheckCircle, Phone, Mail, MapPin, Clock, Shield } from 'lucide-react';
@@ -19,7 +18,10 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-[92vh] flex items-center pt-28 pb-16 md:pt-32 lg:pt-28 xl:pt-32 overflow-hidden">
+    <section 
+      id="home" 
+      className="relative min-h-[92vh] flex items-center pt-20 md:pt-28 lg:pt-24 xl:pt-28 overflow-hidden"
+    >
       {/* Background elements */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 right-0 w-full md:w-3/5 h-full bg-gradient-to-bl from-cleaner-50/30 to-transparent rounded-bl-[100px]" />

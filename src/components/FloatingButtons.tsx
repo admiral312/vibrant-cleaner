@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Rocket } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 
 type FloatingButtonsProps = {
   scrollThreshold?: number;
@@ -32,11 +32,12 @@ const FloatingButtons = ({ scrollThreshold = 300 }: FloatingButtonsProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-cleaner text-white h-14 w-14 rounded-full flex items-center justify-center shadow-lg hover:bg-cleaner-600 transition-all hover:shadow-xl hover:shadow-cleaner/20"
+          className="bg-cleaner text-white h-14 w-14 rounded-full flex flex-col items-center justify-center shadow-lg hover:bg-cleaner-600 transition-all hover:shadow-xl hover:shadow-cleaner/20"
           whileHover={{ y: -5 }}
           aria-label="Scroll to top"
         >
-          <Rocket className="h-6 w-6" />
+          <ArrowUp className="h-6 w-6 mb-0.5" />
+          <span className="text-[10px] font-medium">TOP</span>
         </motion.a>
       )}
     </div>

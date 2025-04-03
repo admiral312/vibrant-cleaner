@@ -127,7 +127,7 @@ const Hero = () => {
                   </div>
                   <div className="text-left">
                     <p className="text-xs text-muted-foreground">Email Us</p>
-                    <p className="font-medium">info@bestcleaner.com</p>
+                    <p className="font-medium text-xs sm:text-base">info@bestcleaner.com</p>
                   </div>
                 </div>
               </motion.div>
@@ -200,7 +200,7 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.2, duration: 0.8 }}
-                    className="absolute -bottom-8 -left-8 md:-left-12 bg-white rounded-lg p-3 md:p-4 shadow-xl"
+                    className="absolute -bottom-8 -left-8 md:-left-12 bg-white rounded-lg p-3 md:p-4 shadow-xl hidden md:block"
                     whileHover={{ 
                       y: -5,
                       boxShadow: "0 25px 50px -12px rgba(85, 179, 213, 0.25)"
@@ -221,7 +221,7 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.4, duration: 0.8 }}
-                    className="absolute -top-6 md:-top-10 -right-4 md:-right-6 bg-white rounded-lg p-3 md:p-4 shadow-xl"
+                    className="absolute -top-6 md:-top-10 -right-4 md:-right-6 bg-white rounded-lg p-3 md:p-4 shadow-xl hidden md:block"
                     whileHover={{ 
                       y: -5,
                       boxShadow: "0 25px 50px -12px rgba(85, 179, 213, 0.25)"
@@ -242,7 +242,7 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.6, duration: 0.8 }}
-                    className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-8 bg-white rounded-lg p-3 shadow-xl"
+                    className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-8 bg-white rounded-lg p-3 shadow-xl hidden md:block"
                     whileHover={{ 
                       x: -5,
                       boxShadow: "0 25px 50px -12px rgba(85, 179, 213, 0.25)"

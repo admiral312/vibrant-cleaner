@@ -98,9 +98,9 @@ const Contact = () => {
                 <div className="contact-info-icon">
                   <Mail size={20} />
                 </div>
-                <div>
+                <div className="max-w-[220px]">
                   <h3 className="text-lg font-semibold mb-1">Email Us</h3>
-                  <p className="text-muted-foreground">thebestcleaner@gmail.com</p>
+                  <p className="text-muted-foreground break-words">thebestcleaner@gmail.com</p>
                 </div>
               </div>
               

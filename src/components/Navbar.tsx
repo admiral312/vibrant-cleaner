@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Calendar, Phone } from 'lucide-react';
+import { Menu, X, Calendar } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Button } from './ui/button';
 import BookingDialog from './BookingDialog';
@@ -41,10 +41,6 @@ const Navbar = () => {
   }, [isOpen]);
 
   const toggleMenu = () => setIsOpen(!isOpen);
-  
-  const handleCallNow = () => {
-    window.location.href = 'tel:1234567890';
-  };
 
   return (
     <>
@@ -109,14 +105,6 @@ const Navbar = () => {
               className="flex items-center gap-3"
             >
               <Button 
-                onClick={handleCallNow}
-                className="bg-cleaner-600 hover:bg-cleaner-700 text-white font-medium px-5 py-2.5 rounded-full transition-all duration-300 flex items-center gap-2"
-              >
-                <Phone className="w-4 h-4" />
-                Call Now
-              </Button>
-              
-              <Button 
                 onClick={() => setShowBookingDialog(true)}
                 className="bg-cleaner hover:bg-cleaner-600 text-white font-medium px-5 py-2.5 rounded-full transition-all duration-300 flex items-center gap-2"
               >
@@ -128,15 +116,6 @@ const Navbar = () => {
 
           {/* Mobile Menu Button and Book Now button */}
           <div className="md:hidden flex items-center gap-4">
-            <Button 
-              onClick={handleCallNow}
-              size="sm"
-              className="bg-cleaner-600 hover:bg-cleaner-700 text-white font-medium rounded-full transition-all duration-300"
-            >
-              <Phone className="w-4 h-4 mr-1" />
-              <span className="text-xs">Call</span>
-            </Button>
-            
             <Button 
               onClick={() => setShowBookingDialog(true)}
               size="sm"

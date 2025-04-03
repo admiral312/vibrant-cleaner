@@ -1,19 +1,19 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Phone } from 'lucide-react';
+import { ArrowUp, Rocket } from 'lucide-react';
 
 type FloatingButtonsProps = {
   scrollThreshold?: number;
 };
 
 const FloatingButtons = ({ scrollThreshold = 300 }: FloatingButtonsProps) => {
-  const [showCallButton, setShowCallButton] = useState(false);
+  const [showScrollButton, setShowScrollButton] = useState(false);
 
-  // Handle scroll event listener to show/hide call button
+  // Handle scroll event listener to show/hide scroll button
   useEffect(() => {
     const handleScroll = () => {
-      setShowCallButton(window.scrollY > scrollThreshold);
+      setShowScrollButton(window.scrollY > scrollThreshold);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -23,41 +23,22 @@ const FloatingButtons = ({ scrollThreshold = 300 }: FloatingButtonsProps) => {
     };
   }, [scrollThreshold]);
 
-  // Handle call now functionality
-  const handleCallNow = () => {
-    window.location.href = 'tel:1234567890';
-  };
-
   return (
-    <div className="fixed bottom-8 right-8 z-40 flex items-center space-x-4">
+    <div className="fixed bottom-8 right-8 z-40">
       {/* Scroll to top button */}
-      <motion.a
-        href="#home"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 0.5 }}
-        className="bg-cleaner text-white h-12 w-12 rounded-full flex items-center justify-center shadow-lg hover:bg-cleaner-600 transition-colors"
-        whileHover={{ y: -5 }}
-        aria-label="Scroll to top"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-        </svg>
-      </motion.a>
-
-      {/* Call Now Floating Button */}
-      {showCallButton && (
-        <motion.button
+      {showScrollButton && (
+        <motion.a
+          href="#home"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          onClick={handleCallNow}
-          className="bg-green-500 text-white h-12 w-12 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors"
-          whileHover={{ y: -5, scale: 1.05 }}
-          aria-label="Call Now"
+          transition={{ duration: 0.5 }}
+          className="bg-cleaner text-white h-14 w-14 rounded-full flex flex-col items-center justify-center shadow-lg hover:bg-cleaner-600 transition-all hover:shadow-xl hover:shadow-cleaner/20"
+          whileHover={{ y: -5 }}
+          aria-label="Scroll to top"
         >
-          <Phone className="h-6 w-6" />
-        </motion.button>
+          <Rocket className="h-6 w-6 mb-0.5" />
+          <span className="text-[10px] font-medium">TOP</span>
+        </motion.a>
       )}
     </div>
   );
